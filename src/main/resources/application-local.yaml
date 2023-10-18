@@ -1,13 +1,18 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+#  datasource:
+#    url: jdbc:h2:mem:mydb
+#    username: sa
+#    password: password
+#    driverClassName: org.h2.Driver
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console.enabled: true
 #spring:
 #  datasource:
-#    url: jdbc:h2:file:/data/demo
+#    url: jdbc:h2:file:/data/member;INIT=RUNSCRIPT FROM 'classpath:/data/member.sql'
+
+  datasource:
+    url: "jdbc:oracle:thin:@localhost:1521/XE"
+    username: system
+    password: admin
