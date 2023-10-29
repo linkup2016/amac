@@ -1,7 +1,7 @@
 package com.yonasamare.amacmembershipmanager.controllers;
 
 import com.yonasamare.amacmembershipmanager.jpa.Member;
-import com.yonasamare.amacmembershipmanager.records.Application;
+import com.yonasamare.amacmembershipmanager.records.Confirmation;
 import com.yonasamare.amacmembershipmanager.services.MemberServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,10 +20,7 @@ public class membershipController {
     }
 
     @PostMapping(path = "new-member")
-    public ResponseEntity<Member> registerNewMember(@RequestBody Member member){
-
-        memberServices.saveMember(member);
-
+    public ResponseEntity<Confirmation> registerNewMember(@RequestBody Member member){
         return ResponseEntity.ok().body(memberServices.saveMember(member));
     }
 }

@@ -1,26 +1,34 @@
 package com.yonasamare.amacmembershipmanager.helpers;
 
+import com.yonasamare.amacmembershipmanager.jpa.Member;
+import com.yonasamare.amacmembershipmanager.records.Confirmation;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Date;
 
 @Slf4j
 public class MemberUtilityFunctions {
+    public String generateMembershipID(Integer rawId) {
+        return Constants.AMAC + rawId;
+    }
 
-    private final Set<Integer> takenIdNumbers = new HashSet<>();
+    public Confirmation formConfirmationMessage(Member newMember) {
+        Confirmation confirmation = new Confirmation();
+        confirmation.setMemberId(generateMembershipID(newMember.getId()));
+        confirmation.setFirstName(newMember.getFirstName());
+        confirmation.setLastName(newMember.getLastName());
+        Date enrollmentDate = newMember.getEnrollmentDate();
+        confirmation.setEnrollmentDate(enrollmentDate);
+        String date = String.valueOf(enrollmentDate).replace("-", "");
+        String rawId = String.valueOf(newMember.getId());
 
-    public String generateMembershipID() {
+        confirmation.setConfirmationNumber((rawId + "-" + date));
 
-        StringBuilder builder = new StringBuilder(Constants.AMAC);
+        String message = "Congratulations " + confirmation.getFirstName() + " " + confirmation.getLastName() +
+                " " + "your membership application has been accepted." + " Your confirmation number is " + confirmation.getConfirmationNumber() +
+                " and your contribution is due " + newMember.getContributionFrequency() + " as of today.  Thank you for becoming a member.";
+        confirmation.setMessage(message);
 
-        AtomicInteger seq = new AtomicInteger(Constants.STARTING_NUMBER);
-        int nextVal = seq.incrementAndGet();
-
-        String newId = builder.append(nextVal).toString();
-        log.info("New Member ID generated {} ", newId);
-
-        return newId;
+        return confirmation;
     }
 }

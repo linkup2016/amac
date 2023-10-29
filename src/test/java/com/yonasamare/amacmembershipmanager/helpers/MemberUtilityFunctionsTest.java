@@ -1,6 +1,5 @@
 package com.yonasamare.amacmembershipmanager.helpers;
 
-import com.yonasamare.amacmembershipmanager.jpa.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +15,6 @@ public class MemberUtilityFunctionsTest {
     }
     @Test
     void testGenerateMembershipID(){
-        utilityFunctions.generateMembershipID();
+        utilityFunctions.generateMembershipID(32452345);
     }
 }

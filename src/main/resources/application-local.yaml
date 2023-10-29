@@ -16,3 +16,10 @@ spring:
     url: "jdbc:oracle:thin:@localhost:1521/XE"
     username: system
     password: admin
+
+email:
+  username: amharaassociationcolumbus@gmail.com
+  password: AMAC@2023
+  host: smtp.gmail.com
+  port_ssl: 465
+  port_tls: 587
