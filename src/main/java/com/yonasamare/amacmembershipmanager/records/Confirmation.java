@@ -10,10 +10,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Confirmation {
-    private String confirmationNumber;
-    private String memberId;
-    private String message;
-    private String firstName;
-    private String lastName;
-    private Date enrollmentDate;
+    String confirmationNumber;
+    String memberId;
+    String message;
+    String firstName;
+    String lastName;
+    Date enrollmentDate;
 }
