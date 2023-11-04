@@ -9,5 +9,4 @@ public class AmacMembershipManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(AmacMembershipManagerApplication.class, args);
     }
-
 }

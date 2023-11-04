@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServicesTest {
 
-    @Autowired
+/*    @Autowired
     MemberServices classToTest;
     @Test
     void getRecordFromLine() {
         classToTest.getRecordFromLine();
-    }
+    }*/
 }

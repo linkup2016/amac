@@ -17,12 +17,4 @@ public class AppConfig {
     public MemberUtilityFunctions getUtilityFunctionsBean() {
         return new MemberUtilityFunctions();
     }
-
-/*
-    @Bean
-    public MemberMapper getMemberMapperBean() {
-        return new MemberMapper();
-    }
-*/
-
 }

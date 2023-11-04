@@ -26,7 +26,7 @@ public class MemberUtilityFunctions {
 
         String message = "Congratulations " + confirmation.getFirstName() + " " + confirmation.getLastName() +
                 " " + "your membership application has been accepted." + " Your confirmation number is " + confirmation.getConfirmationNumber() +
-                " and your contribution is due " + newMember.getContributionFrequency() + " as of today.  Thank you for becoming a member.";
+                " and your contribution is due monthly as of today.  Thank you for becoming a member.";
         confirmation.setMessage(message);
 
         return confirmation;

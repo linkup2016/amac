@@ -4,15 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 
 @Entity
-@Table(name = "MEMBERS")
+@Table(name = "MEMBERS_LIST")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,50 +20,52 @@ public class Member implements Serializable {
     @Column(name = "MEMBER_ID")
     private Integer id;
 
+    @Column(name = "ENROLLMENT_DATE")
+    private Date enrollmentDate;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
     @Column(name = "FIRST_NAME")
     private String firstName;
 
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Generated(GenerationTime.INSERT)
-    @Column(name = "ENROLLMENT_DATE", insertable = false, updatable = false)
-    private Date enrollmentDate;
+    @Column(name = "CALL")
+    private String callMe;
 
-    @Column(name = "STREET_ADDRESS")
-    private String streetAddress;
+    @Column(name = "TEXT")
+    private String textMe;
 
-    @Column(name = "APARTMENT")
-    private String apartment;
-
-    @Column(name = "CITY")
-    private String city;
-
-    @Column(name = "STATE")
-    private String state;
-
-    @Column(name = "ZIP_CODE")
-    private String zipCode;
-
-    @Column(name = "PHONE_NUMBER")
-    private String phoneNumber;
-
-    @Column(name = "EMAIL")
-    private String email;
+    @Column(name = "EMAIL_ME")
+    private String emailMe;
 
     @Column(name = "CONTRIBUTION")
     private Double contribution;
 
-    @Column(name = "CONTRIBUTION_FREQUENCY")
-    private String contributionFrequency;
-
-    @Column(name = "PAYMENT_OPTION")
-    private String paymentOption;
-
     @Column(name = "VOLUNTARY_AREA_CONTRIBUTION")
     private String areaOfContribution;
 
-//    @Column(name = "PREFERRED_COMMUNICATION_WAYS")
-//    private List<String> preferredCommunication;
+    @Column(name = "PAYABLE_ORDER_ID")
+    private String orderId;
+
+    @Column(name = "PAYABLE_TOTAL")
+    private Double totalCharged;
+
+    @Column(name = "PAYABLE_STATUS")
+    private String paymentStatus;
+
+    @Column(name = "PAYABLE_PAYMENT_METHOD")
+    private String paymentMethod;
+
+    @Column(name = "PAYABLE_TRANSACTION_ID")
+    private String transactionId;
+
+    @Column(name = "PAYABLE_LAST_UPDATED")
+    private Date lastUpdated;
 }
 

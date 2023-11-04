@@ -1,3 +1,59 @@
+
+CREATE TABLE MEMBERS_LIST (
+    MEMBER_ID NUMBER PRIMARY KEY,
+    ENROLLMENT_DATE DATE,
+    EMAIL VARCHAR2(255),
+    PHONE_NUMBER VARCHAR2(20),
+    FIRST_NAME VARCHAR2(255),
+    LAST_NAME VARCHAR2(255),
+    CALL VARCHAR2(255),
+    TEXT VARCHAR2(255),
+    EMAIL_ME VARCHAR2(255),
+    CONTRIBUTION NUMBER,
+    VOLUNTARY_AREA_CONTRIBUTION CLOB, -- Change data type to CLOB
+    PAYABLE_ORDER_ID VARCHAR2(255),
+    PAYABLE_TOTAL NUMBER(10,2),
+    PAYABLE_STATUS VARCHAR2(255),
+    PAYABLE_PAYMENT_METHOD VARCHAR2(255),
+    PAYABLE_TRANSACTION_ID VARCHAR2(255),
+    PAYABLE_LAST_UPDATED DATE
+);
+
+
+-- To create a sequence in Oracle that starts with 10,000 and use it to populate the primary key column in the "Members" table, you can use the following SQL script:
+
+-- Create a sequence
+CREATE SEQUENCE member_id_seq
+    START WITH 10000
+    INCREMENT BY 1
+    MAXVALUE 999999999999999999999999999
+    CYCLE
+    NOCACHE;
+
+-- Alter the "Members" table to use the sequence
+-- as the default value for the "member_id" column
+ALTER TABLE Members
+MODIFY member_id DEFAULT member_id_seq.NEXTVAL;
+
+
+CREATE TABLE MEMBERSHIP_CONTRIBUTION_TRACKER (
+    MEMBER_ID NUMBER PRIMARY KEY,
+    JANUARY NUMBER,
+    FEBRUARY NUMBER,
+    MARCH NUMBER,
+    APRIL NUMBER,
+    MAY NUMBER,
+    JUNE NUMBER,
+    JULY NUMBER,
+    AUGUST NUMBER,
+    SEPTEMBER NUMBER,
+    OCTOBER NUMBER,
+    NOVEMBER NUMBER,
+    DECEMBER NUMBER
+);
+
+
+
 drop table membership_contribution_tracker;
 
 CREATE TABLE MEMBERSHIP_CONTRIBUTION_TRACKER
@@ -106,14 +162,14 @@ CREATE TABLE CASH_PAYMENT_DETAILS
 
 drop table PREFERRED_COMMUNICATION_WAYS;
 
- CREATE TABLE PREFERRED_COMMUNICATION_WAYS (
-    PREFERRED_COMMUNICATION_WAYS_ID NUMBER,
-    MEMBER_ID NUMBER,
-    CALL VARCHAR2(50),
-    TEXT VARCHAR2(50),
-    EMAIL VARCHAR2(50),
-    OTHER VARCHAR2(50),
-    FOREIGN KEY (MEMBER_ID) REFERENCES MEMBERS(MEMBER_ID)
+CREATE TABLE PREFERRED_COMMUNICATION_WAYS (
+                                              PREFERRED_COMMUNICATION_WAYS_ID NUMBER,
+                                              MEMBER_ID NUMBER,
+                                              CALL VARCHAR2(50),
+                                              TEXT VARCHAR2(50),
+                                              EMAIL VARCHAR2(50),
+                                              OTHER VARCHAR2(50),
+                                              FOREIGN KEY (MEMBER_ID) REFERENCES MEMBERS(MEMBER_ID)
 );
 
 CREATE SEQUENCE comm_ways_id_seq
@@ -125,4 +181,4 @@ CREATE SEQUENCE comm_ways_id_seq
 
 
 ALTER TABLE PREFERRED_COMMUNICATION_WAYS
-MODIFY PREFERRED_COMMUNICATION_WAYS_ID DEFAULT comm_ways_id_seq.NEXTVAL;
+    MODIFY PREFERRED_COMMUNICATION_WAYS_ID DEFAULT comm_ways_id_seq.NEXTVAL;
