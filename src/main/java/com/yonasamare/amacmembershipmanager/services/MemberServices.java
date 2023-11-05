@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class MemberServices {
 
@@ -26,6 +27,10 @@ public class MemberServices {
     public Confirmation saveMember(Member member) {
         Member newMember = memberRepository.save(member);
         return utilityFunctions.formConfirmationMessage(newMember);
+    }
+
+    public Optional<Member> getMemberById(String id){
+        return memberRepository.findById(Integer.valueOf(id));
     }
 //todo - use optional for reading calls. It is a best practice since database may not return the expected object
     public List<String> getRecordFromLine() {

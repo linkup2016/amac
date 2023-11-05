@@ -1,0 +1,25 @@
+DIFFERENCE BETWEEN PATH VARIABLE AND REQUEST PARAM
+
+1. Usage example:
+
+@PathVariable
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Member> getMember(@PathVariable String id){
+        return ResponseEntity.ok(memberServices.getMemberById(id));
+    }
+
+    Request should be formatted like this: http://localhost:8080/membership/10025 (id is in the path uri)
+
+
+ @RequestParam
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Member> getMember(@RequestParam String id){
+        return ResponseEntity.ok(memberServices.getMemberById(id));
+    }
+
+    Request should be in this format: http://localhost:8080/membership/?id=10025 (id is in query param)
+
+2. How they need to be requested:
+
