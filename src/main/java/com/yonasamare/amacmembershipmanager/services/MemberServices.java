@@ -7,7 +7,9 @@ import com.yonasamare.amacmembershipmanager.jpa.MemberRepository;
 import com.yonasamare.amacmembershipmanager.records.Confirmation;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.yonasamare.amacmembershipmanager.jpa.Member;
+import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberServices {
 
     @Autowired
@@ -32,10 +35,11 @@ public class MemberServices {
     public Optional<Member> getMemberById(String id){
         return memberRepository.findById(Integer.valueOf(id));
     }
-//todo - use optional for reading calls. It is a best practice since database may not return the expected object
-    public List<String> getRecordFromLine() {
+
+    public List<List<String>> enterRecordsFromGoogleSheets() {
+        File file = new File("src/main/resources/data/membersListCSV.csv");
         List<List<String>> records = new ArrayList<List<String>>();
-        try (CSVReader csvReader = new CSVReader(new FileReader("/resources/data/membersListCSV.csv"))) {
+        try (CSVReader csvReader = new CSVReader(new FileReader(file))) {
             String[] values = null;
             while ((values = csvReader.readNext()) != null) {
                 records.add(Arrays.asList(values));
@@ -45,6 +49,6 @@ public class MemberServices {
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return records;
     }
 }

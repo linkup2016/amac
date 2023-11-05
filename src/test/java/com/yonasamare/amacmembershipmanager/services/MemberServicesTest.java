@@ -7,10 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServicesTest {
 
-/*    @Autowired
-    MemberServices classToTest;
+    MemberServices classToTest = new MemberServices();
     @Test
     void getRecordFromLine() {
-        classToTest.getRecordFromLine();
-    }*/
+        classToTest.enterRecordsFromGoogleSheets();
+    }
 }
