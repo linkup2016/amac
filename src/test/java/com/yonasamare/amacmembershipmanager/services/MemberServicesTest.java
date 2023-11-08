@@ -9,7 +9,7 @@ class MemberServicesTest {
 
     MemberServices classToTest = new MemberServices();
     @Test
-    void getRecordFromLine() {
+    void enterRecordsFromGoogleSheets() {
         classToTest.enterRecordsFromGoogleSheets();
     }
 }
