@@ -11,9 +11,6 @@ import org.springframework.boot.test.json.JacksonTester;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -54,19 +51,38 @@ public class RequestJsonTest {
                 .isEqualTo(555 - 555 - 5555);
     }
 
-/*    @Test
+    @Test
     public void MemberDeserializationTest() throws IOException {
         String expected = """
                 {
-                    "id": 99,
-                    "amount": 123.45
-                }
+                   "enrollmentDate": "2023-10-23",
+                   "email": "johndoe@example.com",
+                   "phoneNumber": "555-555-5555",
+                   "firstName": "Matt",
+                   "lastName": "Barl",
+                   "callMe": "yes",
+                   "textMe": "yes",
+                   "emailMe": "no",
+                   "contribution": 100.50,
+                   "areaOfContribution": "marketing",
+                   "orderId": "789adsf",
+                   "totalCharged": "103.50",
+                   "paymentStatus": "paid",
+                   "paymentMethod": "card ending 2345",
+                   "transactionId": "3345236",
+                   "lastUpdated": "2023-10-31"
+                 }
+                 
                 """;
         assertThat(json.parse(expected))
-                .isEqualTo(new Member(99L, 123.45));
-        assertThat(json.parseObject(expected).id()).isEqualTo(99);
-        assertThat(json.parseObject(expected).amount()).isEqualTo(123.45);
-    }*/
+                .isEqualTo(new Member(1001, new Date(System.currentTimeMillis()), "ab@gmail.com",
+                        "999-999-9999", "e", "f", "no", "no", "no", 105.0, "NONE", "982", 108.83,
+                        "pending", "card ending 8978", "3345237", new Date(System.currentTimeMillis())));
+        assertThat(json.parseObject(expected).getId()).isEqualTo(2000);
+        assertThat(json.parseObject(expected).getTransactionId()).isEqualTo(123.45);
+    }
+
+
 }
 
 
