@@ -1,5 +1,6 @@
 package com.yonasamare.amacmembershipmanager.services;
 
+import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import com.yonasamare.amacmembershipmanager.helpers.MemberUtilityFunctions;
@@ -36,19 +37,22 @@ public class MemberServices {
         return memberRepository.findById(Integer.valueOf(id));
     }
 
-    public List<List<String>> enterRecordsFromGoogleSheets() {
+    public String enterRecordsFromGoogleSheets() {
         File file = new File("src/main/resources/data/membersListCSV.csv");
         List<List<String>> records = new ArrayList<List<String>>();
+        String json;
         try (CSVReader csvReader = new CSVReader(new FileReader(file))) {
             String[] values = null;
             while ((values = csvReader.readNext()) != null) {
                 records.add(Arrays.asList(values));
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            // Convert CSV data to JSON using Gson
+            Gson gson = new Gson();
+            json = gson.toJson(records);
+            Member member = gson.fromJson(json, Member.class);
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
-        return records;
+        return json;
     }
 }
