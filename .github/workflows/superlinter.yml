@@ -1,17 +1,35 @@
-name: Super-Linter
+name: Java Lint
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  super-lint:
-    name: Lint code base
-    runs-on: jdk-21
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  lint:
+    runs-on: ubuntu-latest
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v4
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn -B clean install
+
+    - name: Run Checkstyle
+      run: mvn checkstyle:check
+
+    - name: Upload Checkstyle results
+      uses: actions/upload-artifact@v2
+      with:
+        name: checkstyle-results
+        path: target/site/checkstyle
