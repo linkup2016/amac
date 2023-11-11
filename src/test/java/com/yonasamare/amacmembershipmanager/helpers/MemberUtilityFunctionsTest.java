@@ -15,6 +15,7 @@ public class MemberUtilityFunctionsTest {
     }
     @Test
     void testGenerateMembershipID(){
+        log.info("Just adding some change to test the ci-cd setup on github");
         utilityFunctions.generateMembershipID(32452345);
     }
 }
