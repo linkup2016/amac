@@ -48,12 +48,12 @@ public class membershipController {
     public ResponseEntity<Confirmation> registerNewMember(@RequestBody Member member) throws URISyntaxException {
 //        Note that it returned a 201 status instead of 200. This is most appropriate status code since a new resource is created.
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header(HttpHeaders.LOCATION, new URI("http://localhost:8080/membership/id").toASCIIString()).body(memberServices.saveMember(member));
+                .header(HttpHeaders.LOCATION, new URI("http://localhost:9002/membership/id").toASCIIString()).body(memberServices.saveMember(member));
     }
 
     @PostMapping(path = "/batch", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Confirmation> registerNewMembers(@RequestBody Member member) throws URISyntaxException {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header(HttpHeaders.LOCATION, new URI("http://localhost:8080/membership/id").toASCIIString()).body(memberServices.saveMember(member));
+                .header(HttpHeaders.LOCATION, new URI("http://localhost:9002/membership/id").toASCIIString()).body(memberServices.saveMember(member));
     }
 }

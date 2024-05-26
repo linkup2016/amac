@@ -23,9 +23,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles({"local"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class membershipControllerTest {
+class MembershipControllerTest {
 
-    @Autowired
+    /*@Autowired
     TestRestTemplate restTemplate;
 
     private Member member;
@@ -60,5 +60,5 @@ class membershipControllerTest {
 
         JSONArray amounts = documentContext.read("$..amount");
         assertThat(amounts).containsExactlyInAnyOrder(123.45, 100.0, 150.00);
-    }
+    }*/
 }

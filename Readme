@@ -1,3 +1,31 @@
 This program manages membership management for Amhara Association in Columbus and Vicinities. It registers new members,
 collects membership contributions, issues receipt, sends notifications and emails as needed.
 
+Secure Communication:
+
+In the context of this API, which uses SSL/TLS for secure communication, the private and public keys are used in the following way:
+
+1. SSL/TLS Handshake:
+Server's Private Key:
+
+Your server holds the private key securely in its keystore (the keystore.p12 file is added in the resources folder).
+During the SSL/TLS handshake, the server presents its SSL certificate, which includes its public key, to the client.
+The private key corresponding to this public key is used by the server to decrypt messages encrypted with its public key.
+Server's Public Key:
+
+The server's SSL certificate contains its public key, which is sent to the client during the SSL/TLS handshake.
+This public key is used by the client to encrypt a symmetric session key and send it securely to the server.
+2. Encryption and Decryption:
+Encryption by Client:
+
+The client generates a symmetric session key and encrypts it with the server's public key obtained from the SSL certificate.
+This ensures that only the server, with its corresponding private key, can decrypt the session key.
+Decryption by Server:
+
+The server receives the encrypted session key from the client and decrypts it using its private key.
+The decrypted session key is then used to establish a secure communication channel between the client and the server.
+3. Secure Communication:
+Symmetric Encryption:
+Once the secure communication channel is established, symmetric encryption algorithms (e.g., AES) are used for encrypting and decrypting the actual data exchanged between the client and the server.
+Symmetric encryption is faster and more efficient than asymmetric encryption (used with public and private keys) for bulk data encryption.
+

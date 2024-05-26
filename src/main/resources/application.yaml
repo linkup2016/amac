@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:/data/member;INIT=RUNSCRIPT FROM 'classpath:/data/schema.sql'
+    driverClassName: org.h2.Driver
+    username: amac
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 889988
+    key-store-type: PKCS12
+    key-alias: myalias

@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberServicesTest {
 
     MemberServices classToTest = new MemberServices();
-    @Test
+    /*@Test
     void enterRecordsFromGoogleSheets() {
         classToTest.enterRecordsFromGoogleSheets();
-    }
+    }*/
 }

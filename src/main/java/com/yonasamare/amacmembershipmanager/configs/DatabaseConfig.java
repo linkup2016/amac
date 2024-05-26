@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 @Slf4j
 @Configuration
 public class DatabaseConfig {
-    @Value("${spring.datasource.url}")
+/*    @Value("${spring.datasource.url}")
     private String jdbcUrl;
     @Value("${spring.datasource.username}")
     private String username;
@@ -26,5 +26,5 @@ public class DatabaseConfig {
         local.setPassword(password);
 
         return local;
-    }
+    }*/
 }
